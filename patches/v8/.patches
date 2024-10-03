@@ -1,2 +1,4 @@
 chore_allow_customizing_microtask_policy_per_context.patch
 deps_add_v8_object_setinternalfieldfornodecore.patch
+merged_revert_maps_re-enable_side-step_transitions.patch
+merged_maglev_fix_non-materialized_receiver_closure.patch

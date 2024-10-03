@@ -1,0 +1,49 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Igor Sheludko <ishell@chromium.org>
+Date: Tue, 24 Sep 2024 18:20:18 +0000
+Subject: Merged: Revert "[maps] Re-enable side-step transitions"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This reverts commit 62605e134c758be5148d8d7b2541122835006155.
+
+Reason for revert: https://crbug.com/369374536
+
+Original change's description:
+> [maps] Re-enable side-step transitions
+>
+> Bug: 40764103
+> Change-Id: Ie380d54e00a38cf8e8937990af321bc7e498d686
+> Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/5667163
+> Auto-Submit: Olivier Flückiger <olivf@chromium.org>
+> Commit-Queue: Olivier Flückiger <olivf@chromium.org>
+> Reviewed-by: Igor Sheludko <ishell@chromium.org>
+> Commit-Queue: Igor Sheludko <ishell@chromium.org>
+> Cr-Commit-Position: refs/heads/main@{#94738}
+
+Bug: 40764103
+Fixed: 369374536
+(cherry picked from commit a7766feb0a9062a4bb75431fa4dcff4062af1442)
+
+Change-Id: I0f3177438ae8aec9cbebc6596f3cbc32fa8c0546
+Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/5890966
+Reviewed-by: Patrick Thier <pthier@chromium.org>
+Commit-Queue: Igor Sheludko <ishell@chromium.org>
+Cr-Commit-Position: refs/branch-heads/12.8@{#71}
+Cr-Branched-From: 70cbb397b153166027e34c75adf8e7993858222e-refs/heads/12.8.374@{#1}
+Cr-Branched-From: 451b63ed4251c2b21c56144d8428f8be3331539b-refs/heads/main@{#95151}
+
+diff --git a/src/flags/flag-definitions.h b/src/flags/flag-definitions.h
+index 37898bf1d9769130719e0d71cf9b0147ad80988f..69eac414b758673f5b96011aea3c41a4a8b79ffb 100644
+--- a/src/flags/flag-definitions.h
++++ b/src/flags/flag-definitions.h
+@@ -2410,7 +2410,7 @@ DEFINE_BOOL_READONLY(fast_map_update, false,
+ DEFINE_INT(max_valid_polymorphic_map_count, 4,
+            "maximum number of valid maps to track in POLYMORPHIC state")
+ DEFINE_BOOL(
+-    clone_object_sidestep_transitions, true,
++    clone_object_sidestep_transitions, false,
+     "support sidestep transitions for dependency tracking object clone maps")
+ DEFINE_WEAK_IMPLICATION(future, clone_object_sidestep_transitions)
+ 
